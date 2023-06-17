@@ -111,6 +111,16 @@ int gotoxy(int x, int y) {
     return 0;
 }
 
+
+char potions[5][10] = {
+  " ¢½  ¢½ ",
+  "¢½¢½¢½¢½",
+  " ¢½¢½¢½ ",
+  "   ¢½   ",
+  "        "
+};
+
+
 int main() {
 
 }
