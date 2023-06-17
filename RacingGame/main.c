@@ -252,4 +252,141 @@ void show_road() {
             stage++;
         }
         showCar(car[carNumber]);
+
+        textcolor(WHITE, BLACK);
+        for (k = degree - road_idx, j = 0; j < 45; j++, k++) {
+            k = k % degree;
+            gotoxy(road[k][0], j);
+            textcolor(WHITE, GREEN);
+            printf("*");
+            textcolor(WHITE, BLACK);
+            int obstacleX = 0;
+            int itemX = 0;
+            tmp = road[k][1];
+            int tmpX;
+
+            switch (tmp) { // 
+            case 0:  break;
+            case 1:  gotoxy(road[k][0] + ob1[0].x, j);
+                showObstacles1(ob1[0]);
+                obstacleX = road[k][0] + ob1[0].x;
+                break;
+            case 2:  gotoxy(road[k][0] + ob1[1].x, j);
+                showObstacles1(ob1[1]);
+                obstacleX = road[k][0] + ob1[1].x;
+                break;
+            case 3:  gotoxy(road[k][0] + ob1[2].x, j);
+                showObstacles1(ob1[2]);
+                obstacleX = road[k][0] + ob1[2].x;
+                break;
+            case 4:  gotoxy(road[k][0] + ob2[0].x, j);
+                showObstacles1(ob2[0]);
+                obstacleX = road[k][0] + ob2[0].x;
+                break;
+            case 5:  gotoxy(road[k][0] + ob2[1].x, j);
+                showObstacles1(ob2[1]);
+                obstacleX = road[k][0] + ob2[1].x;
+                break;
+            case 6:  gotoxy(road[k][0] + ob2[2].x, j);
+                showObstacles1(ob2[2]);
+                obstacleX = road[k][0] + ob2[2].x;
+                break;
+            case 7:  gotoxy(road[k][0] + ob3[0].x, j);
+                showObstacles1(ob3[0]);
+                obstacleX = road[k][0] + ob3[0].x;
+                break;
+            case 8:  gotoxy(road[k][0] + ob3[1].x, j);
+                showObstacles1(ob3[1]);
+                obstacleX = road[k][0] + ob3[1].x;
+                break;
+            case 9:  gotoxy(road[k][0] + ob3[2].x, j);
+                showObstacles1(ob3[2]);
+                obstacleX = road[k][0] + ob3[2].x;
+                break;
+
+            case 10:
+                itemX = road[k][0] + 7;
+
+                tmpX = itemX;
+                textcolor(BLACK, YELLOW);
+                for (int i = 0; i < 5; i++) {
+                    gotoxy(tmpX + i * 7, j);
+                    printf("%s", itemIcon);
+                }
+                textcolor(WHITE, BLACK);
+
+                break;
+            case 11: itemX = road[k][0] + 7;
+
+                tmpX = itemX;
+                textcolor(WHITE, LIGHTRED);
+                for (int i = 0; i < 5; i++) {
+                    gotoxy(tmpX + i * 7, j);
+
+                    printf("%s", itemIcon);
+                }
+                textcolor(WHITE, BLACK);
+                break;
+            case 12:
+                potionX = road[POTION][0] + 20;
+                textcolor(LIGHTBLUE, BLACK);
+                gotoxy(potionX, j);
+                printf("%s", potions[0]);
+                gotoxy(potionX, j + 1);
+                printf("%s", potions[1]);
+                gotoxy(potionX, j + 2);
+                printf("%s", potions[2]);
+                gotoxy(potionX, j + 3);
+                printf("%s", potions[3]);
+                textcolor(WHITE, BLACK);
+                break;
+
+            default:
+                break;
+            }
+            //obstacle collision
+            if ((tmp >= 1 && tmp <= 9) && k == roadPos) {
+                flag = 0;
+                int p = (obstacleX - curPosX);
+                p = p > 0 ? p : -p;
+                if (p < 7) {
+                    flag = 1;
+                    heart--;
+                    if (heart == 0) {
+                        return;
+                    }
+                }
+            }
+            // item collision
+            if ((tmp == 10 || tmp == 11) && k == roadPos) {
+                item = rand() % 4 + 1;
+
+                gameBoardInfo();
+                if (item == 1) {
+                    // key º¯È¯
+                    using = true;
+                    LeftRightChange = true;
+                    itemTimeStart = clock();
+                }
+            }
+            // potion collision
+            if (tmp == 12 && k == roadPos) {
+                int p = (potionX - curPosX);
+                p = p > 0 ? p : -p;
+                if (p < 5) {
+                    if ((heart + 1) <= tmpHeart) {
+                        heart += 1;
+
+                    }
+                }
+            }
+
+            gotoxy(road[k][2], j);
+            textcolor(WHITE, GREEN);
+            printf("*");
+            textcolor(WHITE, BLACK);
+
+        }
+
+        Sleep(speed);
 }
