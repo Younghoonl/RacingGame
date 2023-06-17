@@ -62,3 +62,14 @@ void showCar(char carBlock[5][9]) {
 
     }
 }
+
+void DeleteCar(char carBlock[5][9]) {
+    int y, x;
+    COORD curPos = GetCurrentCursorPos();
+    for (y = 0; y < 5; y++) {
+        for (x = 0; x < 9; x++) {
+            SetCurrentCursorPos(curPosX + x, curPosY + y);
+            printf(" ");
+        }
+    }
+}
