@@ -174,3 +174,45 @@ void setRoad() {
         else if (i >= 338 && i < 360)  k--;
     }
 }
+
+int stage = 1;
+
+void show_road() {
+
+    int road_idx = 0;
+    int j = 0;
+    int i, k = 0;
+    int tmp;
+    srand(time(NULL));
+
+    obstacle ob1[3];
+    ob1[0].rN = 0;
+    ob1[1].rN = 0;
+    ob1[2].rN = 0;
+    ob1[0].x = 24;
+    ob1[1].x = 6;
+    ob1[2].x = 41;
+
+    obstacle ob2[3];
+    ob2[0].rN = 1;
+    ob2[1].rN = 1;
+    ob2[2].rN = 1;
+    ob2[0].x = 10;
+    ob2[1].x = 18;
+    ob2[2].x = 35;
+
+    obstacle ob3[3];
+    ob3[0].rN = 2;
+    ob3[1].rN = 2;
+    ob3[2].rN = 2;
+    ob3[0].x = 39;
+    ob3[1].x = 30;
+    ob3[2].x = 8;
+
+    itemStruct it;
+    it.x = 7;
+
+    int potionX;
+
+    int roadPos = tmpCycle[tmpC] + curPosY;
+}
