@@ -73,3 +73,18 @@ void DeleteCar(char carBlock[5][9]) {
         }
     }
 }
+
+void ShiftLeft() {
+
+    DeleteCar(car[carNumber]);
+    curPosX -= 2;
+    SetCurrentCursorPos(curPosX, curPosY);
+    showCar(car[carNumber]);
+}
+
+void ShiftRight() {
+    DeleteCar(car[carNumber]);
+    curPosX += 2;
+    SetCurrentCursorPos(curPosX, curPosY);
+    showCar(car[carNumber]);
+}
