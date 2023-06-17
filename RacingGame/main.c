@@ -389,4 +389,197 @@ void show_road() {
         }
 
         Sleep(speed);
+
+        for (k = degree - road_idx, j = 0; j < 45; j++, k++) {
+            k = k % degree;
+            gotoxy(road[k][0], j);
+            printf(" ");
+            tmp = road[k][1];
+            switch (tmp) {
+            case 0:  break;
+            case 1:  gotoxy(road[k][0] + ob1[0].x, j);
+                deleteObstacles1();
+                break;
+            case 2:  gotoxy(road[k][0] + ob1[1].x, j);
+                deleteObstacles1();
+                break;
+            case 3:  gotoxy(road[k][0] + ob1[2].x, j);
+                deleteObstacles1();
+                break;
+            case 4:  gotoxy(road[k][0] + ob2[0].x, j);
+                deleteObstacles1();
+                break;
+            case 5:  gotoxy(road[k][0] + ob2[1].x, j);
+                deleteObstacles1();
+                break;
+            case 6:  gotoxy(road[k][0] + ob2[2].x, j);
+                deleteObstacles1();
+                break;
+            case 7:  gotoxy(road[k][0] + ob3[0].x, j);
+                deleteObstacles1();
+                break;
+            case 8:  gotoxy(road[k][0] + ob3[1].x, j);
+                deleteObstacles1();
+                break;
+            case 9:  gotoxy(road[k][0] + ob3[2].x, j);
+                deleteObstacles1();
+                break;
+            case 10:
+
+                for (int i = 0; i < 5; i++) {
+                    gotoxy(road[k][0] + 7 + i * 7, j);
+                    printf("  ", itemIcon);
+                }
+                break;
+            case 11:
+                for (int i = 0; i < 5; i++) {
+                    gotoxy(road[k][0] + 7 + i * 7, j);
+
+                    printf("  ", itemIcon);
+                }
+                break;
+            case 12:
+                potionX = road[POTION][0] + 20;
+                gotoxy(potionX, j);
+                printf("%s", potions[4]);
+                gotoxy(potionX, j + 1);
+                printf("%s", potions[4]);
+                gotoxy(potionX, j + 2);
+                printf("%s", potions[4]);
+                gotoxy(potionX, j + 3);
+                printf("%s", potions[4]);
+                break;
+
+            default:
+                break;
+            }
+
+            gotoxy(road[k][2], j);
+            printf(" ");
+        }
+        detectcollisionRoad(roadPos);
+
+
+        for (int i = 0; i < 100; i++) {
+            ProcessKeyInPut(roadPos);
+        }
+
+        roadPos--;
+        if (roadPos <= 0) {
+            roadPos = 360;
+        }
+
+        itemTimeEnd = clock();
+        if ((double)(itemTimeEnd - itemTimeStart) / CLOCKS_PER_SEC >= 1.0 && using == true && item == 4) {
+            item = 0;
+        }
+        if ((double)(itemTimeEnd - itemTimeStart) / CLOCKS_PER_SEC >= 5.0 && using == true) {
+            if (BoostChange == true) {
+                if (carNumber == 0) {
+                    carSpeed = 105.4;
+                }
+                else {
+                    carSpeed = 85.4;
+                }
+            }
+
+            LeftRightChange = false;
+            BoostChange = false;
+            CarChange = false;
+            speed = tmpSpeed;
+            carNumber = tmpCarNumber;
+
+
+            item = 0;
+            using = false;
+        }
+        end = clock();
+        gameTime = (double)(end - start) / CLOCKS_PER_SEC; //초단위 변환
+        gameBoardInfo();
+
+        road_idx++;
+
+        if (road_idx % 45 == 0) {
+            tmpC++;
+            tmpC = tmpC % 8;
+            roadPos = tmpCycle[tmpC] + curPosY;
+
+        }
+        if (road_idx > degree) {
+            road_idx = 0;
+            it.x = road[1][0];
+
+        }
+
+        if (road_idx + 2 == degree) {
+            // stage 변경!
+            if (stage == 2) {
+                x = 25;
+                y = 15;
+                SetCurrentCursorPos(x, y++);
+                printf(" ■■■  ■■■■    ■       ■■■    ■■■     ■■");
+                SetCurrentCursorPos(x, y++);
+                printf("■          ■      ■■     ■         ■       ■    ■");
+                SetCurrentCursorPos(x, y++);
+                printf("  ■■      ■     ■  ■    ■  ■■   ■■■        ■");
+                SetCurrentCursorPos(x, y++);
+                printf("      ■    ■    ■ ■ ■   ■    ■   ■           ■");
+                SetCurrentCursorPos(x, y++);
+                printf(" ■■■     ■   ■      ■   ■■■    ■■■    ■■■■");
+                SetCurrentCursorPos(x, y++);
+                Sleep(2000);
+                x = 25;
+                y = 15;
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                speed *= 0.6;
+                carSpeed += 20;
+                stage++;
+            }
+            else if (stage == 3) {
+                x = 25;
+                y = 15;
+                SetCurrentCursorPos(x, y++);
+                printf(" ■■■  ■■■■    ■       ■■■    ■■■    ■■■");
+                SetCurrentCursorPos(x, y++);
+                printf("■          ■      ■■     ■         ■       ■    ■");
+                SetCurrentCursorPos(x, y++);
+                printf("  ■■      ■     ■  ■    ■  ■■   ■■■        ■");
+                SetCurrentCursorPos(x, y++);
+                printf("      ■    ■    ■ ■ ■   ■    ■   ■       ■    ■");
+                SetCurrentCursorPos(x, y++);
+                printf(" ■■■     ■   ■      ■   ■■■    ■■■    ■■■");
+                Sleep(2000);
+                x = 25;
+                y = 15;
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                SetCurrentCursorPos(x, y++);
+                printf("                                                               ");
+                speed *= 0.6;
+                carSpeed += 20;
+                stage++;
+            }
+        }
+
+        if (heart == 0) {
+            break;
+        }
+    }
 }
