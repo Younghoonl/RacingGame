@@ -222,3 +222,112 @@ void eraseScreen() {
         }
     }
 }
+
+void countMotion() {
+    /* 게임 시작 전 READY 3 - 2 - 1 재생 */
+    int x, y;
+    x = 50;
+    y = 15;
+    int tmp = y;
+
+    textcolor(RED, BLACK);
+    /*
+    printf("■■■    ■■■       ■      ■■■    ■    ■ ");
+    printf("■   ■   ■          ■■     ■    ■  ■    ■ ");
+    printf("■■■    ■■■     ■  ■    ■    ■   ■■■ ");
+    printf("■   ■   ■        ■ ■ ■   ■    ■     ■   ");
+    printf("■    ■  ■■■   ■      ■  ■■■       ■   ");
+    */
+    SetCurrentCursorPos(x, y++);
+    printf("■■■    ■■■       ■      ■■■    ■    ■ ");
+    SetCurrentCursorPos(x, y++);
+    printf("■   ■   ■          ■■     ■    ■  ■    ■ ");
+    SetCurrentCursorPos(x, y++);
+    printf("■■■    ■■■     ■  ■    ■    ■   ■■■ ");
+    SetCurrentCursorPos(x, y++);
+    printf("■   ■   ■        ■ ■ ■   ■    ■     ■   ");
+    SetCurrentCursorPos(x, y++);
+    printf("■    ■  ■■■   ■      ■  ■■■       ■   ");
+    Sleep(1500);
+
+    eraseScreen();
+    x = 64;
+    y = 7;
+    y = tmp;
+    textcolor(YELLOW, BLACK);
+
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    printf("          * *");
+    SetCurrentCursorPos(x, y++);
+    printf("          * *");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    printf("          * *");
+    SetCurrentCursorPos(x, y++);
+    printf("          * *");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * *");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    Sleep(500);
+    eraseScreen();
+    y = tmp;
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    printf("          * *");
+    SetCurrentCursorPos(x, y++);
+    printf("         * *");
+    SetCurrentCursorPos(x, y++);
+    printf("        * *");
+    SetCurrentCursorPos(x, y++);
+    printf("      * *");
+    SetCurrentCursorPos(x, y++);
+    printf("    * *");
+    SetCurrentCursorPos(x, y++);
+    printf(" * *");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * *");
+    SetCurrentCursorPos(x, y++);
+    printf("* * * * * * * ");
+    SetCurrentCursorPos(x, y++);
+    Sleep(500);
+    eraseScreen();
+    x += 2;
+    y = tmp;
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    printf("* *");
+    SetCurrentCursorPos(x, y++);
+    Sleep(500);
+
+    textcolor(WHITE, BLACK);
+
+}
