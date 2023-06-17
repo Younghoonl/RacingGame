@@ -63,6 +63,62 @@ void RemoveCursor() {
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
 }
 
+void gameBoardInfo() {
+    int x, y;
+    x = 122;
+    y = 8;
+    for (int i = 0; i < 32; i++) {
+        SetCurrentCursorPos(x - 5, 4 + i);
+        printf("|");
+    }
+    SetCurrentCursorPos(x, y);
+    printf("<%s's GAME>", userName);
+    SetCurrentCursorPos(x, y + 2);
+    printf("---CAR---");
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 8; j++) {
+            SetCurrentCursorPos(j + x, i + y + 3);
+            printf("  ");
+        }
+    }
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 8; j++) {
+            SetCurrentCursorPos(j + x, i + y + 3);
+            printf("%c", car[carNumber][i][j]);
+        }
+    }
+    
+    y += 8;
+    SetCurrentCursorPos(x, y);
+    printf("---------");
+    SetCurrentCursorPos(x, y + 2);
+    printf("---ITEM---");
+    SetCurrentCursorPos(x, y + 3);
+    //printf("%d", item);
+    for (int i = 0; i < 3; i++) {
+        SetCurrentCursorPos(x, y + 3 + i);
+        printf("%s ", Itemshape[item][i]);
+    }
+
+    SetCurrentCursorPos(x, y + 7);
+    printf("----------");
+    SetCurrentCursorPos(x, y + 9);
+    printf("SPEED : %.1lfkm/s    ", carSpeed);
+    SetCurrentCursorPos(x, y + 11);
+    //printf("SCORE : %d     ", score);
+    SetCurrentCursorPos(x, y + 11);
+    printf("HEART ");
+    for (int i = 0; i < heart; i++) {
+        printf("♥");
+    }
+    for (int i = tmpHeart; i > heart; i--) {
+        printf("♡");
+    }
+    SetCurrentCursorPos(x, y + 13);
+    printf("SCORE : %d", gameTime);
+}
+
 int gameInfoSelect() {
     /* 유저 이름, 자동차 선택 */
     int x = 32;
