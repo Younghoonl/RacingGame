@@ -6,7 +6,8 @@
 #include <math.h>
 #include <conio.h>
 #include <stdbool.h>
-
+#include "Car.h"
+#include "Items.h"
 
 // score --> time
 // 물약 아이템
@@ -215,4 +216,40 @@ void show_road() {
     int potionX;
 
     int roadPos = tmpCycle[tmpC] + curPosY;
+
+    int degree = 360;
+    int x, y;
+    x = 25;
+    y = 15;
+    while (1) {
+        if (stage == 1) {
+            SetCurrentCursorPos(x, y++);
+            printf(" ■■■  ■■■■    ■       ■■■    ■■■      ■");
+            SetCurrentCursorPos(x, y++);
+            printf("■          ■      ■■     ■         ■       ■ ■");
+            SetCurrentCursorPos(x, y++);
+            printf("  ■■      ■     ■  ■    ■  ■■   ■■■      ■");
+            SetCurrentCursorPos(x, y++);
+            printf("      ■    ■    ■ ■ ■   ■    ■   ■          ■");
+            SetCurrentCursorPos(x, y++);
+            printf(" ■■■     ■   ■      ■   ■■■    ■■■    ■■■");
+            SetCurrentCursorPos(x, y++);
+            Sleep(1000);
+            x = 25;
+            y = 15;
+            printf("                                                               ");
+            SetCurrentCursorPos(x, y++);
+            printf("                                                               ");
+            SetCurrentCursorPos(x, y++);
+            printf("                                                               ");
+            SetCurrentCursorPos(x, y++);
+            printf("                                                               ");
+            SetCurrentCursorPos(x, y++);
+            printf("                                                               ");
+            SetCurrentCursorPos(x, y++);
+            printf("                                                               ");
+
+            stage++;
+        }
+        showCar(car[carNumber]);
 }
