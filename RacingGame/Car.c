@@ -21,3 +21,44 @@ typedef struct ObstacleStruct {
     int rN;
     int x;
 }obstacle;
+
+extern int flag;
+extern clock_t itemTimeStart;
+extern clock_t itemTimeEnd;
+
+extern void useItem();
+
+static COORD curPos;
+
+bool LeftRightChange = false;
+
+static void SetCurrentCursorPos(int x, int y) {
+    COORD position = { x, y };
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
+}
+
+static COORD GetCurrentCursorPos(void) {
+    COORD curPoint;
+    CONSOLE_SCREEN_BUFFER_INFO curInfo;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+    curPoint.X = curInfo.dwCursorPosition.X;
+    curPoint.Y = curInfo.dwCursorPosition.Y;
+
+    return curPoint;
+}
+
+void showCar(char carBlock[5][9]) {
+    int x, y;
+    for (y = 0; y < 5; y++) {
+        for (x = 0; x < 8; x++) {
+            SetCurrentCursorPos(curPosX + x, curPosY + y);
+            if (flag == 0)
+                textcolor(15, 0);
+            if (flag == 1)
+                textcolor(4, 0);
+            printf("%c", carBlock[y][x]);
+        }
+
+    }
+}
