@@ -114,3 +114,53 @@ int gotoxy(int x, int y) {
 int main() {
 
 }
+
+void setRoad() {
+    double ly, ry;
+    double y;
+    int obNum;
+
+    for (int i = 0; i < 360; i++) {
+        if (i % ITEM1 == 0 && i != 0)
+            road[i][1] = 10;    // ÁÁÀº item 
+        else if (i % ITEM2 == 0 && i != 0)
+            road[i][1] = 11;    // ³ª»Û item 
+        else if (i % OB1 == 0) road[i][1] = 1;
+        else if (i % OB2 == 0) road[i][1] = 2;
+        else if (i % OB3 == 0) road[i][1] = 3;
+        else if (i % OB4 == 0) road[i][1] = 4;
+        else if (i % OB5 == 0) road[i][1] = 5;
+        else if (i % OB6 == 0) road[i][1] = 6;
+        else if (i % OB7 == 0) road[i][1] = 7;
+        else if (i % OB8 == 0) road[i][1] = 8;
+        else if (i % OB9 == 0) road[i][1] = 9;
+        else  road[i][1] = 0;
+    }
+    road[POTION][1] = 12;
+
+    for (int i = 0; i < 90; i++)
+    {
+        road[i][0] = 25;
+        road[i][2] = 70;
+    }
+
+    for (int i = 0, j = 90; i < 1440; j++, i += 8) {
+        y = sin(i * 3.14 / 180);
+
+        ly = y * 20 + 25.0;
+        ry = y * 20 + 70.0;
+
+        road[j][0] = ly;
+        road[j][2] = ry;
+    }
+
+    for (int i = 270, k = 0; i < 360; i++)
+    {
+        road[i][0] = 25 + k;
+        road[i][2] = 70 + k;
+        if (i < 292) k++;
+        else if (i >= 293 && i < 315) k--;
+        else if (i >= 315 && i < 337) k++;
+        else if (i >= 338 && i < 360)  k--;
+    }
+}
