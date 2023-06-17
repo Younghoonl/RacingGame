@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Car.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="ObstacleAndItem.c" />
     <ClCompile Include="Screen.c" />
   </ItemGroup>
   <ItemGroup>
