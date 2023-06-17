@@ -101,3 +101,68 @@ int detectcollisionRoad(int roadPos) {
     }
     return 0;
 }
+
+void ProcessKeyInPut(int roadPos) {
+    int key;
+    if (_kbhit() != 0) {
+        key = _getch();
+        switch (key) {
+        case LEFT:
+            if (detectcollisionRoad(roadPos) == 1) {
+                return;
+            }
+            if (LeftRightChange == false) {
+                ShiftLeft();
+            }
+            else {
+                ShiftRight();
+            }
+            break;
+        case RIGHT:
+            if (detectcollisionRoad(roadPos) == 1) {
+                return;
+            }
+            if (LeftRightChange == false) {
+                ShiftRight();
+            }
+            else {
+                ShiftLeft();
+            }
+            break;
+        case SPACE:
+            useItem();
+
+            itemTimeStart = clock();
+            break;
+        case XX:
+            if (detectcollisionRoad(roadPos) == 1) {
+                return;
+            }
+            if (LeftRightChange == false) {
+                ShiftRight();
+                ShiftRight();
+                ShiftRight();
+            }
+            else {
+                ShiftLeft();
+            }
+            break;
+        case Z:
+            if (detectcollisionRoad(roadPos) == 1) {
+                return;
+            }
+            if (LeftRightChange == false) {
+                ShiftLeft();
+                ShiftLeft();
+                ShiftLeft();
+            }
+            else {
+                ShiftRight();
+            }
+            break;
+        default:
+            break;
+        }
+
+    }
+}
