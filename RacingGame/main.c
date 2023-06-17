@@ -114,3 +114,27 @@ int gotoxy(int x, int y) {
 int main() {
 
 }
+
+void setRoad() {
+    double ly, ry;
+    double y;
+    int obNum;
+
+    for (int i = 0; i < 360; i++) {
+        if (i % ITEM1 == 0 && i != 0)
+            road[i][1] = 10;    // ÁÁÀº item 
+        else if (i % ITEM2 == 0 && i != 0)
+            road[i][1] = 11;    // ³ª»Û item 
+        else if (i % OB1 == 0) road[i][1] = 1;
+        else if (i % OB2 == 0) road[i][1] = 2;
+        else if (i % OB3 == 0) road[i][1] = 3;
+        else if (i % OB4 == 0) road[i][1] = 4;
+        else if (i % OB5 == 0) road[i][1] = 5;
+        else if (i % OB6 == 0) road[i][1] = 6;
+        else if (i % OB7 == 0) road[i][1] = 7;
+        else if (i % OB8 == 0) road[i][1] = 8;
+        else if (i % OB9 == 0) road[i][1] = 9;
+        else  road[i][1] = 0;
+    }
+
+}
