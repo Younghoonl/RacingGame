@@ -46,3 +46,21 @@ typedef struct ObstacleStruct {
 typedef struct ItemStruct {
     int x;
 }itemStruct;
+
+void textcolor(int foreground, int background)
+{
+    int color = foreground + background * 16;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+
+void showObstacles1(obstacle ob) {
+
+    textcolor(RED, BLACK);
+    printf("%s", Obstacles[ob.rN]);
+    textcolor(WHITE, BLACK);
+}
+
+void deleteObstacles1() {
+    printf("%s", Obstacles[3]);
+}
