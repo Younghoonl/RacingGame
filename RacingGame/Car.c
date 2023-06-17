@@ -88,3 +88,16 @@ void ShiftRight() {
     SetCurrentCursorPos(curPosX, curPosY);
     showCar(car[carNumber]);
 }
+
+
+int detectcollisionRoad(int roadPos) {
+    if (curPosX < road[roadPos][0]) {
+        ShiftRight();
+        return 1;
+    }
+    else if (curPosX + 9 > road[roadPos][2]) {
+        ShiftLeft();
+        return 1;
+    }
+    return 0;
+}
