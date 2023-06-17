@@ -331,3 +331,32 @@ void countMotion() {
     textcolor(WHITE, BLACK);
 
 }
+
+void gameOver(int score) {
+
+    int x = 40;
+    int y = 10;
+    SetCurrentCursorPos(x, y++);
+    printf("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
+    SetCurrentCursorPos(x, y++);
+    printf("|　DRIVE MASTER　　　　　　　　　　　　　　　　　　　[－][口][×] |");
+    SetCurrentCursorPos(x, y++);
+    printf("|￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣  ￣￣￣￣￣￣|");
+    SetCurrentCursorPos(x, y++);
+    printf("|　 GAME OVER!                                            　　　 |");
+    SetCurrentCursorPos(x, y++);
+    printf("|　 다시 도전하세요!                                      　　　 |");
+    SetCurrentCursorPos(x, y++);
+    printf("|　 당신의 점수는 ?                                       　　　 |");
+    SetCurrentCursorPos(x, y++);
+    printf("|　　　　＿＿＿＿＿＿　　　          ＿＿＿＿＿＿           　　　|");
+    SetCurrentCursorPos(x, y++);
+    printf("| 　　　｜   %d    |　              ｜   종료    |　              |", gameTime);
+    SetCurrentCursorPos(x, y++);
+    printf("|　　　　￣￣￣￣￣￣　　　          ＿＿＿＿＿＿             　|");
+    SetCurrentCursorPos(x, y++);
+    printf("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
+    Sleep(1000);
+    SetCurrentCursorPos(50, 50);
+
+}
