@@ -63,6 +63,34 @@ void RemoveCursor() {
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
 }
 
+void gameBoardInfo() {
+    int x, y;
+    x = 122;
+    y = 8;
+    for (int i = 0; i < 32; i++) {
+        SetCurrentCursorPos(x - 5, 4 + i);
+        printf("|");
+    }
+    SetCurrentCursorPos(x, y);
+    printf("<%s's GAME>", userName);
+    SetCurrentCursorPos(x, y + 2);
+    printf("---CAR---");
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 8; j++) {
+            SetCurrentCursorPos(j + x, i + y + 3);
+            printf("  ");
+        }
+    }
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 8; j++) {
+            SetCurrentCursorPos(j + x, i + y + 3);
+            printf("%c", car[carNumber][i][j]);
+        }
+    }
+    
+}
+
 int gameInfoSelect() {
     /* 유저 이름, 자동차 선택 */
     int x = 32;
