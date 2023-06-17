@@ -136,5 +136,31 @@ void setRoad() {
         else if (i % OB9 == 0) road[i][1] = 9;
         else  road[i][1] = 0;
     }
+    road[POTION][1] = 12;
 
+    for (int i = 0; i < 90; i++)
+    {
+        road[i][0] = 25;
+        road[i][2] = 70;
+    }
+
+    for (int i = 0, j = 90; i < 1440; j++, i += 8) {
+        y = sin(i * 3.14 / 180);
+
+        ly = y * 20 + 25.0;
+        ry = y * 20 + 70.0;
+
+        road[j][0] = ly;
+        road[j][2] = ry;
+    }
+
+    for (int i = 270, k = 0; i < 360; i++)
+    {
+        road[i][0] = 25 + k;
+        road[i][2] = 70 + k;
+        if (i < 292) k++;
+        else if (i >= 293 && i < 315) k--;
+        else if (i >= 315 && i < 337) k++;
+        else if (i >= 338 && i < 360)  k--;
+    }
 }
