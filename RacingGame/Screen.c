@@ -89,6 +89,34 @@ void gameBoardInfo() {
         }
     }
     
+    y += 8;
+    SetCurrentCursorPos(x, y);
+    printf("---------");
+    SetCurrentCursorPos(x, y + 2);
+    printf("---ITEM---");
+    SetCurrentCursorPos(x, y + 3);
+    //printf("%d", item);
+    for (int i = 0; i < 3; i++) {
+        SetCurrentCursorPos(x, y + 3 + i);
+        printf("%s ", Itemshape[item][i]);
+    }
+
+    SetCurrentCursorPos(x, y + 7);
+    printf("----------");
+    SetCurrentCursorPos(x, y + 9);
+    printf("SPEED : %.1lfkm/s    ", carSpeed);
+    SetCurrentCursorPos(x, y + 11);
+    //printf("SCORE : %d     ", score);
+    SetCurrentCursorPos(x, y + 11);
+    printf("HEART ");
+    for (int i = 0; i < heart; i++) {
+        printf("¢¾");
+    }
+    for (int i = tmpHeart; i > heart; i--) {
+        printf("¢½");
+    }
+    SetCurrentCursorPos(x, y + 13);
+    printf("SCORE : %d", gameTime);
 }
 
 int gameInfoSelect() {
