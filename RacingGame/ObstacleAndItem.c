@@ -64,3 +64,39 @@ void showObstacles1(obstacle ob) {
 void deleteObstacles1() {
     printf("%s", Obstacles[3]);
 }
+
+void useItem() {
+    /*
+    * 초기 item = 0 , item과 collision 후에 item 1~3중에 하나 지정 -> space 키 누르면, 사용
+    * item 0 : 아이템이 존재하지 않음
+    * item 1 : 키 좌우 변환
+    * item 2 : 부스터
+    * item 3 : 자동차 변환
+    */
+
+    if (item == 0) {
+        return; // 아무 일도 일어나지 않음
+    }
+    else if (item == 1) {
+        // key 변환
+        LeftRightChange = true;
+    }
+    else if (item == 2) {
+        // 부스터
+        BoostChange = true;
+        speed /= 10;
+        carSpeed += 22.5;
+    }
+    else if (item == 3) {
+        CarChange = true;
+        carNumber = 4;
+    }
+    else if (item == 4) {
+        if ((heart + 1) <= tmpHeart) {
+            heart += 1;
+
+        }
+    }
+
+    using = true;
+}
