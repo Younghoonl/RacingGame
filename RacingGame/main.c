@@ -122,10 +122,6 @@ char potions[5][10] = {
 };
 
 
-int main() {
-
-}
-
 void setRoad() {
     double ly, ry;
     double y;
@@ -582,4 +578,38 @@ void show_road() {
             break;
         }
     }
+}
+
+int main() {
+    sprintf(command, "mode con: lines=%d cols=%d", lines, cols);
+    system(command);
+    RemoveCursor();
+
+    int re;
+
+    initScreen();
+    int key;
+    key = _getch();
+    eraseScreen();
+    carNumber = gameInfoSelect();
+
+    eraseScreen();
+    countMotion();
+    eraseScreen();
+
+    gameBoardInfo();
+
+    SetCurrentCursorPos(curPosX, curPosY);
+    start = clock();
+
+    showCar(car[carNumber]);
+    setRoad();
+    show_road();
+
+    eraseScreen();
+    gameOver(score);
+    Sleep(1500);
+    eraseScreen();
+
+
 }
